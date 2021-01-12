@@ -13,28 +13,28 @@ def randArray(arrLen):
     return data
 
 # Create example array of random numbers
-exArray = randArray(50)
+exArray = randArray(5)
 
 print(exArray)
 
 # Develop function to find minimum number in array
 def sortFunc(inpArr):
     """Sort numpy array into order"""
-    # Create empty array to append results to
-    outList = []
-    # Determine length of input array
-    arrLen = len(inpArr)
-    # Loop through the input array
-    for i in range(arrLen):
-        # Find the min number in input array
-        minNo = np.amin(inpArr)
-        # Append lowest number to output list
-        outList.append(minNo)
-        # Remove number from input array
-        inpArr = inpArr[inpArr != minNo]
-    # Convert output list to array
-    outArr = np.array(outList)
-    # Return the output array
-    return outArr
+    # Determine the length of the input array
+    sizeArr = len(inpArr)
+    # Loop through each entry in the array
+    for i in range(0,sizeArr):
+        # Initially, assume first element is the lowest value
+        lowValIdx = i
+        # For each element, compare value to subsequent elements
+        for j in range(i+1, sizeArr):
+            # If the subsequent elements are lower, change low index value
+            if inpArr[j] < inpArr[lowValIdx]:
+                lowValIdx = j
+        # Once lowest value found, reorder array
+        inpArr[i], inpArr[lowValIdx] = inpArr[lowValIdx], inpArr[i]
+    return inpArr
 
-print(sortFunc(exArray))
+# Create example sorted array
+srtdArr = sortFunc(exArray)
+print(srtdArr)
