@@ -19,7 +19,7 @@ print(exArray)
 
 # Develop function to find minimum number in array
 def sortFunc(inpArr):
-    """Sort numpy array into order"""
+    """Sort numpy array into numerical order"""
     # Determine the length of the input array
     sizeArr = len(inpArr)
     # Loop through each entry in the array
@@ -28,13 +28,17 @@ def sortFunc(inpArr):
         lowValIdx = i
         # For each element, compare value to subsequent elements
         for j in range(i+1, sizeArr):
-            # If the subsequent elements are lower, change low index value
+            # If one of the subsequent elements is lower, change low index value
             if inpArr[j] < inpArr[lowValIdx]:
                 lowValIdx = j
         # Once lowest value found, reorder array
         inpArr[i], inpArr[lowValIdx] = inpArr[lowValIdx], inpArr[i]
     return inpArr
 
+# Initial time
+t = time.clock()
 # Create example sorted array
 srtdArr = sortFunc(exArray)
+t = time.clock() - t
+print(f'Calculation took {t} seconds')
 print(srtdArr)
