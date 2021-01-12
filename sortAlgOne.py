@@ -13,9 +13,7 @@ def randArray(arrLen):
     return data
 
 # Create example array of random numbers
-exArray = randArray(5)
-
-print(exArray)
+exArray = randArray(5000)
 
 # Develop function to find minimum number in array
 def sortFunc(inpArr):
@@ -40,5 +38,12 @@ t = time.clock()
 # Create example sorted array
 srtdArr = sortFunc(exArray)
 t = time.clock() - t
-print(f'Calculation took {t} seconds')
-print(srtdArr)
+print(f'My calculation took {t} seconds')
+
+# Compare with sorted function
+# Initial time
+t = time.clock()
+# Create example sorted array
+srtdArr = sorted(exArray)
+t = time.clock() - t
+print(f'Built-in calculation took {t} seconds')
